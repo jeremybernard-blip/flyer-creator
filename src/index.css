@@ -1,0 +1,197 @@
+@import "tailwindcss";
+
+@layer utilities {
+  .page-break-after {
+    page-break-after: always !important;
+    break-after: page !important;
+  }
+  .page-break-inside-avoid {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+  
+  /* Frosted Glass Utilities */
+  .glass-card {
+    background: rgba(255, 255, 255, 0.04) !important;
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3) !important;
+  }
+  
+  .glass-card-hover {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .glass-card-hover:hover {
+    background: rgba(255, 255, 255, 0.08) !important;
+    border-color: rgba(255, 255, 255, 0.15) !important;
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.45), 0 0 15px 0 rgba(59, 130, 246, 0.15) !important;
+  }
+
+  .glass-input {
+    background: rgba(255, 255, 255, 0.03) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    color: #f1f5f9 !important;
+    transition: all 0.2s ease;
+  }
+
+  .glass-input::placeholder {
+    color: #94a3b8 !important;
+    opacity: 0.5;
+  }
+
+  .glass-input:focus {
+    background: rgba(255, 255, 255, 0.06) !important;
+    border-color: rgba(59, 130, 246, 0.5) !important;
+    outline: none !important;
+    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2) !important;
+  }
+
+  .glass-tab-active {
+    background: rgba(59, 130, 246, 0.15) !important;
+    border-color: rgba(59, 130, 246, 0.3) !important;
+    color: #ffffff !important;
+    box-shadow: 0 0 12px 0 rgba(59, 130, 246, 0.12) !important;
+  }
+}
+
+/* Custom gorgeous dark glass scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.01);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Print CSS Configurations */
+@media print {
+  @page {
+    size: A4;
+    margin: 0 !important;
+  }
+
+  /* Hide all app framework UI components except the preview flyer itself */
+  body, html {
+    background: #ffffff !important;
+    color: #000000 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 210mm !important;
+    height: auto !important;
+  }
+
+  #flyer-generator-app {
+    background: #ffffff !important;
+    background-image: none !important;
+    color: #000000 !important;
+    min-height: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  header, 
+  footer,
+  #control-column-left,
+  #preview-navbar,
+  #app-header,
+  #excel-uploader-container,
+  #demo-box,
+  #batch-progress-card,
+  #product-form-card,
+  #sheet-table-wrapper,
+  #pdf-tip-panel,
+  .brand-section footer {
+    display: none !important;
+  }
+
+  #app-workspace {
+    display: block !important;
+    width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    gap: 0 !important;
+  }
+
+  #preview-column-right {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    box-shadow: none !important;
+    border: none !important;
+  }
+
+  #rendered-leaflet-wrapper {
+    overflow: visible !important;
+    max-height: none !important;
+    padding: 0 !important;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    width: 100% !important;
+  }
+
+  #document-canvas {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-height: 0 !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    background: transparent !important;
+  }
+
+  /* Reset individual sheet properties on physical A4 papers */
+  .cover-sheet,
+  .sommaire-section,
+  .brand-page-sheet {
+    box-sizing: border-box !important;
+    width: 210mm !important;
+    height: 295mm !important;
+    min-height: 295mm !important;
+    max-height: 295mm !important;
+    padding: 15mm !important;
+    margin: 0 !important;
+    border: none !important;
+    box-shadow: none !important;
+    background: #ffffff !important;
+    page-break-after: always !important;
+    break-after: page !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  /* Remove flex gaps between sheets completely to prevent shifts */
+  .flex-col.gap-10 {
+    gap: 0 !important;
+  }
+
+  /* Force background colors and image layers to stay visible in Chrome/Safari PDF engine */
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    color-adjust: exact !important;
+  }
+
+  h1, h2, h3, h4, table, tr, td, img {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  .page-break-after {
+    page-break-after: always !important;
+    break-after: page !important;
+  }
+}
+

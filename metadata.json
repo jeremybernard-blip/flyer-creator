@@ -1,0 +1,6 @@
+{
+  "name": "Créateur de Flyers Industriels",
+  "description": "Générez et exportez des catalogues et flyers promotionnels à partir d'un fichier Excel, avec récupération d'images chez Mabeo Industries et enrichissement de contenu géré par l'IA Gemini.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
